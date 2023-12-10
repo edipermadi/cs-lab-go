@@ -5,7 +5,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/edipermadi/cs-lab-go/pkg/sorting"
+	"github.com/edipermadi/cs-lab-go/pkg/algorithm/sorting"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -21,13 +21,13 @@ func sorted[T int | int8 | uint8 | int16 | uint16 | int32 | uint32 | int64 | uin
 	return result
 }
 
-func TestInsertionSort(t *testing.T) {
+func TestSliceInsertionSort(t *testing.T) {
 	t.Run("Ascending", func(t *testing.T) {
 		t.Run("Int", func(t *testing.T) {
 			values := rand.Perm(100)
 			expected := sorted(values, sorting.Ascending)
 
-			sorting.InsertionSort(values, sorting.Ascending)
+			sorting.SliceInsertionSort(values, sorting.Ascending)
 			assert.Equal(t, expected, values)
 		})
 
@@ -35,7 +35,7 @@ func TestInsertionSort(t *testing.T) {
 			values := []string{"ghi", "abc", "def"}
 			expected := sorted(values, sorting.Ascending)
 
-			sorting.InsertionSort(values, sorting.Ascending)
+			sorting.SliceInsertionSort(values, sorting.Ascending)
 			assert.Equal(t, expected, values)
 		})
 	})
@@ -45,7 +45,7 @@ func TestInsertionSort(t *testing.T) {
 			values := rand.Perm(100)
 			expected := sorted(values, sorting.Descending)
 
-			sorting.InsertionSort(values, sorting.Descending)
+			sorting.SliceInsertionSort(values, sorting.Descending)
 			assert.Equal(t, expected, values)
 		})
 
@@ -53,7 +53,7 @@ func TestInsertionSort(t *testing.T) {
 			values := []string{"ghi", "abc", "def"}
 			expected := sorted(values, sorting.Descending)
 
-			sorting.InsertionSort(values, sorting.Descending)
+			sorting.SliceInsertionSort(values, sorting.Descending)
 			assert.Equal(t, expected, values)
 		})
 	})

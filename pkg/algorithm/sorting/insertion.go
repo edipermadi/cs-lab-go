@@ -1,6 +1,8 @@
 package sorting
 
-func InsertionSort[T int | int8 | uint8 | int16 | uint16 | int32 | uint32 | int64 | uint64 | float32 | float64 | string](values []T, ordering Ordering) {
+import "golang.org/x/exp/constraints"
+
+func SliceInsertionSort[T constraints.Ordered](values []T, ordering Ordering) {
 	for i := 0; i < len(values); i++ {
 		var left T
 		current := values[i]
