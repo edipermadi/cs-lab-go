@@ -1,11 +1,11 @@
-package sorting_test
+package double_linked_list_test
 
 import (
 	"math/rand"
 	"sort"
 	"testing"
 
-	"github.com/edipermadi/cs-lab-go/pkg/algorithm/sorting"
+	"github.com/edipermadi/cs-lab-go/pkg/data_structure/linked_list/double_linked_list"
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/exp/constraints"
 )
@@ -22,7 +22,7 @@ func sorted[T constraints.Ordered](values []T, ascending bool) []T {
 	return result
 }
 
-func TestSliceInsertionSort(t *testing.T) {
+func TestDoubleLinkedListInsertionSort(t *testing.T) {
 	type testCase struct {
 		Title     string
 		Ascending bool
@@ -38,17 +38,15 @@ func TestSliceInsertionSort(t *testing.T) {
 			t.Run("Int", func(t *testing.T) {
 				values := rand.Perm(100)
 				expected := sorted(values, tc.Ascending)
-
-				sorting.InsertionSort(values, tc.Ascending)
-				assert.Equal(t, expected, values)
+				node := double_linked_list.FromSlice(values)
+				assert.Equal(t, expected, double_linked_list.InsertionSort(node, tc.Ascending).ToSlice())
 			})
 
 			t.Run("String", func(t *testing.T) {
 				values := []string{"ghi", "abc", "def"}
 				expected := sorted(values, tc.Ascending)
-
-				sorting.InsertionSort(values, tc.Ascending)
-				assert.Equal(t, expected, values)
+				node := double_linked_list.FromSlice(values)
+				assert.Equal(t, expected, double_linked_list.InsertionSort(node, tc.Ascending).ToSlice())
 			})
 		})
 	}
