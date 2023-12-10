@@ -1,21 +1,10 @@
-package double_linked_list
+package single_linked_list
 
 import "golang.org/x/exp/constraints"
 
 type Node[T constraints.Ordered] struct {
-	Value    T
-	Previous *Node[T]
-	Next     *Node[T]
-}
-
-func (n *Node[T]) Head() *Node[T] {
-	for node := n; ; {
-		if node.Previous == nil {
-			return node
-		}
-
-		node = node.Previous
-	}
+	Value T
+	Next  *Node[T]
 }
 
 func (n *Node[T]) Tail() *Node[T] {
@@ -44,7 +33,7 @@ func (n *Node[T]) ToSlice() []T {
 
 func (n *Node[T]) Length() int {
 	count := 0
-	for node := n.Head(); ; {
+	for node := n; ; {
 		count++
 		if node.Next == nil {
 			break
@@ -66,7 +55,6 @@ func FromSlice[T constraints.Ordered](values []T) *Node[T] {
 
 		if prev != nil {
 			prev.Next = node
-			node.Previous = prev
 		}
 
 		prev = node
