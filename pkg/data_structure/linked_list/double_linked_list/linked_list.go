@@ -31,11 +31,11 @@ func (n *Node[T]) Tail() *Node[T] {
 func (n *Node[T]) ToSlice() []T {
 	values := make([]T, 0)
 	for node := n.Head(); ; {
-		values = append(values, node.Value)
-		if node.Next == nil {
+		if node == nil {
 			break
 		}
 
+		values = append(values, node.Value)
 		node = node.Next
 	}
 

@@ -1,15 +1,17 @@
 package sorting_test
 
 import (
+	"github.com/edipermadi/cs-lab-go/pkg/data_structure/linked_list/double_linked_list"
 	"math/rand"
 	"sort"
 	"testing"
 
 	"github.com/edipermadi/cs-lab-go/pkg/algorithm/sorting"
 	"github.com/stretchr/testify/assert"
+	"golang.org/x/exp/constraints"
 )
 
-func sorted[T int | int8 | uint8 | int16 | uint16 | int32 | uint32 | int64 | uint64 | float32 | float64 | string](values []T, ordering sorting.Ordering) []T {
+func sorted[T constraints.Ordered](values []T, ordering sorting.Ordering) []T {
 	result := append([]T{}, values...)
 	sort.SliceStable(result, func(i, j int) bool {
 		if ordering == sorting.Ascending {
@@ -57,5 +59,38 @@ func TestSliceInsertionSort(t *testing.T) {
 			assert.Equal(t, expected, values)
 		})
 	})
+}
 
+func TestDoubleLinkedListInsertionSort(t *testing.T) {
+	t.Run("Ascending", func(t *testing.T) {
+		t.Run("Int", func(t *testing.T) {
+			values := rand.Perm(100)
+			expected := sorted(values, sorting.Ascending)
+			node := double_linked_list.FromSlice(values)
+			assert.Equal(t, expected, sorting.DoubleLinkedListInsertionSort(node, sorting.Ascending).ToSlice())
+		})
+
+		t.Run("String", func(t *testing.T) {
+			values := []string{"ghi", "abc", "def"}
+			expected := sorted(values, sorting.Ascending)
+			node := double_linked_list.FromSlice(values)
+			assert.Equal(t, expected, sorting.DoubleLinkedListInsertionSort(node, sorting.Ascending).ToSlice())
+		})
+	})
+
+	t.Run("Descending", func(t *testing.T) {
+		t.Run("Int", func(t *testing.T) {
+			values := rand.Perm(100)
+			expected := sorted(values, sorting.Descending)
+			node := double_linked_list.FromSlice(values)
+			assert.Equal(t, expected, sorting.DoubleLinkedListInsertionSort(node, sorting.Descending).ToSlice())
+		})
+
+		t.Run("String", func(t *testing.T) {
+			values := []string{"ghi", "abc", "def"}
+			expected := sorted(values, sorting.Descending)
+			node := double_linked_list.FromSlice(values)
+			assert.Equal(t, expected, sorting.DoubleLinkedListInsertionSort(node, sorting.Descending).ToSlice())
+		})
+	})
 }

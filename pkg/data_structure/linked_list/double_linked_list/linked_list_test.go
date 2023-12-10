@@ -19,4 +19,5 @@ func TestFromSlice(t *testing.T) {
 	assert.Equal(t, values, node.Next.ToSlice())
 	assert.Equal(t, values, node.Next.Head().ToSlice())
 	assert.Equal(t, values, node.Tail().ToSlice())
+	assert.Equal(t, values, node.ToSlice())
 }
