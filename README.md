@@ -1,2 +1,10 @@
 # cs-lab-go
-Computer Scince Lab in Go
+Computer Science Lab in Go
+
+# Sorting Algorithm
+
+| Algorithm      | Data Structure                              | Time Complexity |
+|----------------|---------------------------------------------|-----------------|
+| Bubble Sort    | [Slice](pkg/algorithm/sorting/bubble.go)    | O(N²)           |
+| Selection Sort | [Slice](pkg/algorithm/sorting/selection.go) | O(N²)           |
+| Insertion Sort | [Slice](pkg/algorithm/sorting/insertion.go) | O(N²)           |
