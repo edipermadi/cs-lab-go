@@ -16,10 +16,10 @@ func InsertionSort[T constraints.Ordered](values []T, ascending bool) {
 			process := false
 			if ascending {
 				// find index where left < current < right
-				process = (j == 0 || left < current) && current < right
+				process = (j == 0 || left <= current) && current < right
 			} else {
 				// find index where left > current > right
-				process = (j == 0 || left > current) && current > right
+				process = (j == 0 || left >= current) && current > right
 			}
 
 			// when condition met, shift and insert value
