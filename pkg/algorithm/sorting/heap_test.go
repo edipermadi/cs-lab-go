@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestSliceCycleSort(t *testing.T) {
+func TestSliceHeapSort(t *testing.T) {
 	type testCase struct {
 		Title     string
 		Ascending bool
@@ -27,7 +27,7 @@ func TestSliceCycleSort(t *testing.T) {
 					values := rand.Perm(100)
 					expected := test.Sorted(values, tc.Ascending)
 
-					sorting.CycleSort(values, tc.Ascending)
+					sorting.HeapSort(values, tc.Ascending)
 					require.Equal(t, expected, values)
 				})
 
@@ -36,7 +36,7 @@ func TestSliceCycleSort(t *testing.T) {
 					values = append(values, rand.Perm(50)...)
 					expected := test.Sorted(values, tc.Ascending)
 
-					sorting.CycleSort(values, tc.Ascending)
+					sorting.HeapSort(values, tc.Ascending)
 					require.Equal(t, expected, values)
 				})
 			})
@@ -45,7 +45,7 @@ func TestSliceCycleSort(t *testing.T) {
 				values := []string{"ghi", "abc", "def"}
 				expected := test.Sorted(values, tc.Ascending)
 
-				sorting.CycleSort(values, tc.Ascending)
+				sorting.HeapSort(values, tc.Ascending)
 				require.Equal(t, expected, values)
 			})
 		})

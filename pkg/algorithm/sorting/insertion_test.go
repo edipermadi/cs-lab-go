@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/edipermadi/cs-lab-go/pkg/algorithm/sorting"
-	"github.com/edipermadi/cs-lab-go/pkg/test"
+	"github.com/edipermadi/cs-lab-go/test"
 	"github.com/stretchr/testify/require"
 )
 

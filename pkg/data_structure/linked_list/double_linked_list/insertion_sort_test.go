@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/edipermadi/cs-lab-go/pkg/data_structure/linked_list/double_linked_list"
-	"github.com/edipermadi/cs-lab-go/pkg/test"
+	"github.com/edipermadi/cs-lab-go/test"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -1,11 +1,11 @@
 package single_linked_list_test
 
 import (
+	"github.com/edipermadi/cs-lab-go/test"
 	"math/rand"
 	"testing"
 
 	"github.com/edipermadi/cs-lab-go/pkg/data_structure/linked_list/single_linked_list"
-	"github.com/edipermadi/cs-lab-go/pkg/test"
 	"github.com/stretchr/testify/assert"
 )
 
