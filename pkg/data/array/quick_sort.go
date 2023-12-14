@@ -34,8 +34,7 @@ func QuickSort[T constraints.Ordered](values []T, ascending bool) {
 	var stack Stack[int]
 	stack.PushPair(0, len(values)-1)
 
-	iter := 1000
-	for stack.Size() > 0 && iter > 0 {
+	for stack.Size() > 0 {
 		l, h := stack.PopPair()
 
 		var j int
@@ -43,9 +42,6 @@ func QuickSort[T constraints.Ordered](values []T, ascending bool) {
 			j = partition(values, l, h, ascending)
 			stack.PushPair(l, j)
 			stack.PushPair(j+1, h)
-		} else {
-
 		}
-		iter--
 	}
 }
