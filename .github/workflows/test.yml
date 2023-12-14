@@ -1,8 +1,8 @@
-name: unit-test
-run-name: unit-test
+name: test
+run-name: test
 on: [push]
 jobs:
-  check-bats-version:
+  unit-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
