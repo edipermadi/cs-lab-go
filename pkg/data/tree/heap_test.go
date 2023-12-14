@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/edipermadi/cs-lab-go/pkg/data_structure/tree"
+	"github.com/edipermadi/cs-lab-go/pkg/data/tree"
 	"github.com/stretchr/testify/require"
 )
 

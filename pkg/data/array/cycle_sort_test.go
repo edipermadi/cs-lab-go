@@ -1,15 +1,15 @@
-package sorting_test
+package array_test
 
 import (
 	"math/rand"
 	"testing"
 
-	"github.com/edipermadi/cs-lab-go/pkg/algorithm/sorting"
+	"github.com/edipermadi/cs-lab-go/pkg/data/array"
 	"github.com/edipermadi/cs-lab-go/test"
 	"github.com/stretchr/testify/require"
 )
 
-func TestSliceExchangeSort(t *testing.T) {
+func TestArrayCycleSort(t *testing.T) {
 	type testCase struct {
 		Title     string
 		Ascending bool
@@ -27,7 +27,7 @@ func TestSliceExchangeSort(t *testing.T) {
 					values := rand.Perm(100)
 					expected := test.Sorted(values, tc.Ascending)
 
-					sorting.ExchangeSort(values, tc.Ascending)
+					array.CycleSort(values, tc.Ascending)
 					require.Equal(t, expected, values)
 				})
 
@@ -36,7 +36,7 @@ func TestSliceExchangeSort(t *testing.T) {
 					values = append(values, rand.Perm(50)...)
 					expected := test.Sorted(values, tc.Ascending)
 
-					sorting.ExchangeSort(values, tc.Ascending)
+					array.CycleSort(values, tc.Ascending)
 					require.Equal(t, expected, values)
 				})
 			})
@@ -45,7 +45,7 @@ func TestSliceExchangeSort(t *testing.T) {
 				values := []string{"ghi", "abc", "def"}
 				expected := test.Sorted(values, tc.Ascending)
 
-				sorting.ExchangeSort(values, tc.Ascending)
+				array.CycleSort(values, tc.Ascending)
 				require.Equal(t, expected, values)
 			})
 		})

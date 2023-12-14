@@ -1,4 +1,4 @@
-package sorting
+package array
 
 import "golang.org/x/exp/constraints"
 

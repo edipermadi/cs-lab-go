@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/edipermadi/cs-lab-go/pkg/data_structure/linked_list/double_linked_list"
+	"github.com/edipermadi/cs-lab-go/pkg/data/linked_list/double_linked_list"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
