@@ -10,8 +10,10 @@ func buildHeap[T constraints.Ordered](values []T, ascending bool) {
 		return
 	}
 
+	// ascending  : sorted means parent <= node
+	// descending : sorted means parent >= node
 	sorted := func(x tree.Index) bool {
-		return (ascending && values[x] <= values[x.Parent()]) || (!ascending && values[x] >= values[x.Parent()])
+		return (ascending && values[x] >= values[x.Parent()]) || (!ascending && values[x] <= values[x.Parent()])
 	}
 
 	// scan nodes left to right
@@ -27,8 +29,12 @@ func buildHeap[T constraints.Ordered](values []T, ascending bool) {
 }
 
 func HeapSort[T constraints.Ordered](values []T, ascending bool) {
-	buildHeap(values, ascending)
+	// when ascending, build max heap
+	// when descending, build min heap
+	buildHeap(values, !ascending)
 
+	// ascending: sorted means left <= right
+	// descending: sorted means left >= right
 	sorted := func(i, j tree.Index) bool {
 		return (ascending && values[i] <= values[j]) ||
 			(!ascending && values[i] >= values[j])
@@ -38,7 +44,7 @@ func HeapSort[T constraints.Ordered](values []T, ascending bool) {
 	for i := tree.Index(len(values)) - 1; i > 0; i-- {
 		values[0], values[i] = values[i], values[0]
 
-		// scan node left to right as parent
+		// scan node top to bottom as parent
 		var n tree.Index
 		for p := tree.Index(0); ; p = n {
 			l, r := p.LeftChild(), p.RightChild()
@@ -61,7 +67,7 @@ func HeapSort[T constraints.Ordered](values []T, ascending bool) {
 				values[p], values[n] = values[n], values[p]
 			}
 
-			// point to the next node as parent
+			// dive to the next node as parent
 		}
 	}
 }
