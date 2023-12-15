@@ -6,8 +6,6 @@ import (
 )
 
 func SliceHeapSort[T constraints.Ordered](values []T, ascending bool) {
-	// ascending: build max heap
-	// descending: build min heap
 	tmpHeap := heap.NewSliceHeap[T](ascending)
 	for _, v := range values {
 		tmpHeap.Add(v)
