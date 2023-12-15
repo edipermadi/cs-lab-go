@@ -4,9 +4,9 @@ import (
 	"math/rand"
 	"testing"
 
+	"github.com/edipermadi/cs-lab-go/internal/test"
 	"github.com/edipermadi/cs-lab-go/pkg/algorithm/sort"
 	"github.com/edipermadi/cs-lab-go/pkg/structure/linked_list/single_linked_list"
-	"github.com/edipermadi/cs-lab-go/test"
 	"github.com/stretchr/testify/assert"
 )
 
