@@ -1,34 +1,34 @@
-package array_test
+package stack_test
 
 import (
 	"testing"
 
-	"github.com/edipermadi/cs-lab-go/pkg/data/array"
+	"github.com/edipermadi/cs-lab-go/pkg/data/stack"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestStack_Push(t *testing.T) {
-	var stack array.Stack[int]
+	var instance stack.Stack[int]
 
 	for i := 0; i < 10; i++ {
-		stack.Push(i)
+		instance.Push(i)
 	}
 
 	for i := 9; i >= 0; i-- {
-		assert.Equal(t, i, stack.Pop())
+		assert.Equal(t, i, instance.Pop())
 	}
 }
 
 func TestStack_PushPair(t *testing.T) {
-	var stack array.Stack[int]
+	var instance stack.Stack[int]
 
 	for i := 0; i < 10; i += 2 {
 		x, y := i, i+1
-		stack.PushPair(x, y)
+		instance.PushPair(x, y)
 	}
 
 	for i := 9; i >= 0; i -= 2 {
-		x, y := stack.PopPair()
+		x, y := instance.PopPair()
 		assert.Equal(t, i-1, x)
 		assert.Equal(t, i, y)
 	}

@@ -1,14 +1,14 @@
 package array
 
 import (
-	"github.com/edipermadi/cs-lab-go/pkg/data/tree"
+	"github.com/edipermadi/cs-lab-go/pkg/data/heap"
 	"golang.org/x/exp/constraints"
 )
 
 func HeapSort[T constraints.Ordered](values []T, ascending bool) {
 	// ascending: build max heap
 	// descending: build min heap
-	heap := tree.Heap[T]{Ascending: ascending}
+	heap := heap.NewHeap[T](ascending)
 	for _, v := range values {
 		heap.Add(v)
 	}

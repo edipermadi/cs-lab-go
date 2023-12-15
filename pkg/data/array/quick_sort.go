@@ -1,6 +1,7 @@
 package array
 
 import (
+	"github.com/edipermadi/cs-lab-go/pkg/data/stack"
 	"golang.org/x/exp/constraints"
 )
 
@@ -10,7 +11,11 @@ func partition[T constraints.Ordered](values []T, l int, h int, ascending bool) 
 
 	for i < j {
 		for ; i < len(values); i++ {
-			if (ascending && values[i] > pivot) || (!ascending && values[i] < pivot) {
+			if ascending && values[i] > pivot {
+				// in ascending mode break when current value is greater than pivot
+				break
+			} else if !ascending && values[i] < pivot {
+				// in ascending mode break when current value is less than pivot
 				break
 			}
 		}
@@ -31,7 +36,7 @@ func partition[T constraints.Ordered](values []T, l int, h int, ascending bool) 
 }
 
 func QuickSort[T constraints.Ordered](values []T, ascending bool) {
-	var stack Stack[int]
+	var stack stack.Stack[int]
 	stack.PushPair(0, len(values)-1)
 
 	for stack.Size() > 0 {

@@ -1,4 +1,4 @@
-package array
+package stack
 
 import "golang.org/x/exp/constraints"
 
