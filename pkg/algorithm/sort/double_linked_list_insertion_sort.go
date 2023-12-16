@@ -1,11 +1,11 @@
 package sort
 
 import (
-	"github.com/edipermadi/cs-lab-go/pkg/structure/linked_list/double_linked_list"
+	"github.com/edipermadi/cs-lab-go/pkg/structure/list"
 	"golang.org/x/exp/constraints"
 )
 
-func DoubleLinkedListInsertionSort[T constraints.Ordered](node *double_linked_list.Node[T], ascending bool) *double_linked_list.Node[T] {
+func DoubleLinkedListInsertionSort[T constraints.Ordered](node *list.DoubleLink[T], ascending bool) *list.DoubleLink[T] {
 	head := node.Head()
 	for current := head; ; {
 		if current == nil {
@@ -21,7 +21,7 @@ func DoubleLinkedListInsertionSort[T constraints.Ordered](node *double_linked_li
 		}
 
 		if notSorted {
-			var left *double_linked_list.Node[T]
+			var left *list.DoubleLink[T]
 			for right := head; ; {
 				if right == nil {
 					break
@@ -36,18 +36,7 @@ func DoubleLinkedListInsertionSort[T constraints.Ordered](node *double_linked_li
 				}
 
 				if process {
-					cNext := current.Next
-					cPrev := current.Previous
-
-					// disconnect current from previous
-					if current.Previous != nil {
-						current.Previous.Next = cNext
-					}
-
-					// disconnect current from next
-					if current.Next != nil {
-						current.Next.Previous = cPrev
-					}
+					current.Splice()
 
 					// update current node
 					current.Next = right

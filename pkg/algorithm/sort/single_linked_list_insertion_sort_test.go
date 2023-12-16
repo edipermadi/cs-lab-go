@@ -6,7 +6,6 @@ import (
 
 	"github.com/edipermadi/cs-lab-go/internal/test"
 	"github.com/edipermadi/cs-lab-go/pkg/algorithm/sort"
-	"github.com/edipermadi/cs-lab-go/pkg/structure/linked_list/single_linked_list"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -26,15 +25,17 @@ func TestSingleLinkedListInsertionSort(t *testing.T) {
 			t.Run("Int", func(t *testing.T) {
 				values := rand.Perm(100)
 				expected := test.Sorted(values, tc.Ascending)
-				node := single_linked_list.FromSlice(values)
-				assert.Equal(t, expected, sort.SingleLinkedListInsertionSort(node, tc.Ascending).ToSlice())
+				node := test.SingleLinkedListFromSlice(values)
+				node = sort.SingleLinkedListInsertionSort(node, tc.Ascending)
+				assert.Equal(t, expected, test.SliceFromSingleLinkedList(node))
 			})
 
 			t.Run("String", func(t *testing.T) {
 				values := []string{"ghi", "abc", "def"}
 				expected := test.Sorted(values, tc.Ascending)
-				node := single_linked_list.FromSlice(values)
-				assert.Equal(t, expected, sort.SingleLinkedListInsertionSort(node, tc.Ascending).ToSlice())
+				node := test.SingleLinkedListFromSlice(values)
+				node = sort.SingleLinkedListInsertionSort(node, tc.Ascending)
+				assert.Equal(t, expected, test.SliceFromSingleLinkedList(node))
 			})
 		})
 	}

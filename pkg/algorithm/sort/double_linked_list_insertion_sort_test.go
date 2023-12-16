@@ -6,7 +6,6 @@ import (
 
 	"github.com/edipermadi/cs-lab-go/internal/test"
 	"github.com/edipermadi/cs-lab-go/pkg/algorithm/sort"
-	"github.com/edipermadi/cs-lab-go/pkg/structure/linked_list/double_linked_list"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -26,15 +25,17 @@ func TestDoubleLinkedListInsertionSort(t *testing.T) {
 			t.Run("Int", func(t *testing.T) {
 				values := rand.Perm(100)
 				expected := test.Sorted(values, tc.Ascending)
-				node := double_linked_list.FromSlice(values)
-				assert.Equal(t, expected, sort.DoubleLinkedListInsertionSort(node, tc.Ascending).ToSlice())
+				node := test.DoubleLinkedListFromSlice(values)
+				node = sort.DoubleLinkedListInsertionSort(node, tc.Ascending)
+				assert.Equal(t, expected, test.SliceFromDoubleLinkedList(node))
 			})
 
 			t.Run("String", func(t *testing.T) {
 				values := []string{"ghi", "abc", "def"}
 				expected := test.Sorted(values, tc.Ascending)
-				node := double_linked_list.FromSlice(values)
-				assert.Equal(t, expected, sort.DoubleLinkedListInsertionSort(node, tc.Ascending).ToSlice())
+				node := test.DoubleLinkedListFromSlice(values)
+				node = sort.DoubleLinkedListInsertionSort(node, tc.Ascending)
+				assert.Equal(t, expected, test.SliceFromDoubleLinkedList(node))
 			})
 		})
 	}

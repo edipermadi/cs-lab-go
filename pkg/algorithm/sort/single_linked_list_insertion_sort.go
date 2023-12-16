@@ -1,12 +1,12 @@
 package sort
 
 import (
-	"github.com/edipermadi/cs-lab-go/pkg/structure/linked_list/single_linked_list"
+	"github.com/edipermadi/cs-lab-go/pkg/structure/list"
 	"golang.org/x/exp/constraints"
 )
 
-func SingleLinkedListInsertionSort[T constraints.Ordered](node *single_linked_list.Node[T], ascending bool) *single_linked_list.Node[T] {
-	var previous *single_linked_list.Node[T]
+func SingleLinkedListInsertionSort[T constraints.Ordered](node *list.SingleLink[T], ascending bool) *list.SingleLink[T] {
+	var previous *list.SingleLink[T]
 	head := node
 	for current := head; ; {
 		if current == nil {
@@ -22,7 +22,7 @@ func SingleLinkedListInsertionSort[T constraints.Ordered](node *single_linked_li
 		}
 
 		if notSorted {
-			var left *single_linked_list.Node[T]
+			var left *list.SingleLink[T]
 			for right := head; ; {
 				if right == nil {
 					break
@@ -37,12 +37,7 @@ func SingleLinkedListInsertionSort[T constraints.Ordered](node *single_linked_li
 				}
 
 				if process {
-					cNext := current.Next
-
-					// disconnect current from previous
-					if previous != nil {
-						previous.Next = cNext
-					}
+					current.Splice(previous)
 
 					// update current node
 					current.Next = right
