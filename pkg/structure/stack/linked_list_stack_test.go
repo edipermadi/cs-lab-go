@@ -7,8 +7,8 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestSliceStack_Push(t *testing.T) {
-	instance := stack.NewSliceStack[int]()
+func TestLinkedListStack_Push(t *testing.T) {
+	instance := stack.NewLinkedListStack[int]()
 
 	for i := 0; i < 10; i++ {
 		instance.Push(i)
@@ -19,8 +19,8 @@ func TestSliceStack_Push(t *testing.T) {
 	}
 }
 
-func TestSliceStack_PushPair(t *testing.T) {
-	instance := stack.NewSliceStack[int]()
+func TestLinkedListStack_PushPair(t *testing.T) {
+	instance := stack.NewLinkedListStack[int]()
 
 	for i := 0; i < 10; i += 2 {
 		x, y := i, i+1

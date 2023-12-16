@@ -2,6 +2,10 @@ package stack
 
 import "golang.org/x/exp/constraints"
 
+func NewSliceStack[T constraints.Ordered]() *SliceStack[T] {
+	return &SliceStack[T]{}
+}
+
 type SliceStack[T constraints.Ordered] struct {
 	values []T
 	tos    int
